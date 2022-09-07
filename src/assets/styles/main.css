@@ -1,0 +1,11 @@
+.ant-skeleton {
+    width: 100%;
+}
+
+.card-photo:hover figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: linear 0.3s all;
+}
