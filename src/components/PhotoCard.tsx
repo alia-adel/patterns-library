@@ -1,7 +1,6 @@
 import React from 'react'
-import { Skeleton, Typography } from 'antd'
+import { Skeleton } from 'antd'
 import { Photo } from '../models'
-const { Title } = Typography
 const PhotoCard = ({ photo }: { photo: Photo }) => {
 
     const Photo = () => {
@@ -10,13 +9,13 @@ const PhotoCard = ({ photo }: { photo: Photo }) => {
                 <img src={photo.src} alt={photo.alt}
                     className='w-full h-full' />
                 <figcaption
-                    className='absolute bottom-0 left-0 right-0 h-[85px] px-4 py-5 bg-gray-800 opacity-70'>
-                    <Title level={3}><span className='text-white capitalize'>{photo.caption}</span></Title>
+                    className='absolute bottom-0 left-0 right-0 px-4 py-5 bg-gray-800 opacity-70'>
+                    <span className='text-white capitalize'>{photo.caption}</span>
                 </figcaption>
             </figure>
         }
 
-        return <Skeleton.Image style={{ height: '300px',width: '300px' }} active={true} />
+        return <Skeleton.Image style={{ height: '300px', width: '300px' }} active={true} />
     }
     return <Photo />
 }

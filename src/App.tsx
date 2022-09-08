@@ -1,13 +1,13 @@
 import React from 'react'
 import { Layout } from 'antd'
 import './assets/styles/main.css'
-import RegistrationPage from './pages/RegistrationPage'
+import SearchResultsPage from './pages/SearchResultsPage'
 
 function App() {
   const { Content } = Layout
   return <Layout className="layout h-screen">
     <Content className='h-full'>
-      <RegistrationPage />
+      <SearchResultsPage />
     </Content>
   </Layout>
 }

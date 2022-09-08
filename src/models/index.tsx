@@ -1,21 +1,21 @@
 
-export type Categories = {
-    [key: string]: any
-}
+export const CATEGORIES: { value: string }[] = [
+    { value: 'Nature' },
+    { value: 'Travel' },
+    { value: 'Decor' },
+    { value: 'Animals' },
+    { value: 'Architecture' },
+    { value: 'Cooking' }
+]
 
-export const CATEGORIES: Categories = {
-    'nature': ['sea', 'mountains', 'forests', 'flowers'], 
-    'travel': ['adventure', 'leisure'], 
-    'decor': ['living', 'bathroom', 'dinning', 'kitchen'], 
-    'animals': ['wild', 'pets', 'birds', 'insects', 'sea'], 
-    'architecture': ['cottage', 'building', 'skyscrapper'], 
-    'cooking': ['grill', 'baking', 'asian food', 'healthy food']
-}
 export type UnSplashPhoto = {
     alt_description: string;
     urls: {
         regular: string,
         small: string
+    };
+    user: {
+        name: string;
     };
     width: string;
     height: string;
@@ -31,7 +31,7 @@ export type Photo = {
 }
 
 
-export type WizardContextModel= {
+export type WizardContextModel = {
     wizardData?: RegistrationWizard | undefined,
     setWizardData?: Function | undefined,
     currentStep?: any,
