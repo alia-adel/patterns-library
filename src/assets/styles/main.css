@@ -7,11 +7,16 @@
     width: 100%;
     padding: 0;
 }
+
+.anticon.anticon-check {
+    vertical-align: 0.2em;
+}
+
 .card-photo figcaption {
     transition: linear 0.3s all;
 }
 
-.ant-checkbox-wrapper-checked .card-photo figcaption {
+.ant-checkbox-wrapper:hover .card-photo figcaption, .ant-checkbox-wrapper-checked .card-photo figcaption {
     display: flex;
     align-items: center;
     justify-content: center;

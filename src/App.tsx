@@ -6,7 +6,7 @@ import RegistrationPage from './pages/RegistrationPage'
 function App() {
   const { Content } = Layout
   return <Layout className="layout h-screen">
-    <Content className='h-full p-10'>
+    <Content className='h-full'>
       <RegistrationPage />
     </Content>
   </Layout>

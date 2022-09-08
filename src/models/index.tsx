@@ -34,16 +34,17 @@ export type Photo = {
 export type WizardContextModel= {
     wizardData?: RegistrationWizard | undefined,
     setWizardData?: Function | undefined,
-    currentStep?: any
+    currentStep?: any,
+    setDisableNextFinishBtn?: Function
 }
 
 export type RegistrationWizard = {
-    form: {
+    form?: {
         userName: string | number | undefined;
         password: string | number | undefined;
         email: string | undefined;
     };
-    categories: string[];
-    subCategories: string[];
+    categories?: string[];
+    subCategories?: string[];
     [key: string]: any;
 }

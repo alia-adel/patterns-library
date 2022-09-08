@@ -1,5 +1,5 @@
-import { Skeleton, Typography } from 'antd'
 import React from 'react'
+import { Skeleton, Typography } from 'antd'
 import { Photo } from '../models'
 const { Title } = Typography
 const PhotoCard = ({ photo }: { photo: Photo }) => {
@@ -16,7 +16,7 @@ const PhotoCard = ({ photo }: { photo: Photo }) => {
             </figure>
         }
 
-        return <Skeleton.Image style={{ width: '100%' }} active={true} />
+        return <Skeleton.Image style={{ height: '300px',width: '300px' }} active={true} />
     }
     return <Photo />
 }

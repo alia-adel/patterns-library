@@ -11,7 +11,7 @@ const CheckboxGroup = Checkbox.Group;
 
 const PhotosList = () => {
     const wizardContext = useContext(RegistrationWizardContext)
-    const { wizardData, currentStep } = wizardContext
+    const { wizardData, currentStep, setDisableNextFinishBtn } = wizardContext
     const [list, setList] = useState<any>()
     const [checkedList, setCheckedList] = useState<CheckboxValueType[]>([]);
     const checkedListRef = useRef(checkedList)
@@ -25,10 +25,16 @@ const PhotosList = () => {
         getList()
     }, [currentStep])
 
+    useEffect(() => {
+        if(setDisableNextFinishBtn) {
+            setDisableNextFinishBtn(checkedList.length === 0)
+        }        
+    }, [checkedList, setDisableNextFinishBtn])
+
     const onChange = (list: CheckboxValueType[]) => {
         setCheckedList(list);
         checkedListRef.current = list
-        let clonedWizardData = { ...wizardData }
+        let clonedWizardData = wizardData?{ ...wizardData }:{}
         clonedWizardData[wizardContext.currentStep.property] = list
         if (wizardContext.setWizardData) {
             wizardContext.setWizardData(clonedWizardData)
@@ -36,8 +42,8 @@ const PhotosList = () => {
     };
 
     const ListItem = ({ photo, index }: { photo: Photo, index: number }) => {
-        return <li key={`${photo.caption}_${index}`} className='list-item flex col items-stretch'>
-            <Checkbox value={photo.caption} key={index}>
+        return <li key={`${photo.caption}_${index}`} className='list-item flex col items-stretch h-full w-full'>
+            <Checkbox value={photo.caption} key={index} className='h-full w-full'>
                 <PhotoCard photo={photo} />
             </Checkbox>
         </li>

@@ -11,6 +11,7 @@ const PhotosList = React.lazy(() => import('./PhotosList'))
 const RegistrationStepper = () => {
     const [currentStep, setCurrentStep] = useState(0)
     const [wizardData, setWizardData] = useState<RegistrationWizard>()
+    const [disableNextFinishBtn, setDisableNextFinishBtn] = useState<boolean>(true)
 
     const steps = [
         {
@@ -37,7 +38,7 @@ const RegistrationStepper = () => {
             content: PhotosList,
             fnCall: async (): Promise<any> => {
                 try {
-                    const response = wizardData ? await getSubCategoriesPhotos(wizardData.categories) : []
+                    const response = wizardData?.categories ? await getSubCategoriesPhotos(wizardData.categories) : []
                     return response
                 } catch (error) {
                     console.error(error)
@@ -50,6 +51,7 @@ const RegistrationStepper = () => {
 
     const next = () => {
         setCurrentStep(currentStep + 1)
+        setDisableNextFinishBtn(false)
     }
 
     const prev = () => {
@@ -59,7 +61,8 @@ const RegistrationStepper = () => {
     return <RegistrationWizardContext.Provider value={{
         wizardData: wizardData,
         setWizardData: setWizardData,
-        currentStep: steps[currentStep]
+        currentStep: steps[currentStep],
+        setDisableNextFinishBtn: setDisableNextFinishBtn
     }}>
         <div className='h-full flex flex-col items-stretch'>
             <Steps current={currentStep}>
@@ -77,12 +80,12 @@ const RegistrationStepper = () => {
             </div>
             <div className='steps-action flex flex-row-reverse items-center justify-between flex-wrap mt-4'>
                 {currentStep < steps.length - 1 && (
-                    <Button type='primary' onClick={() => next()}>
+                    <Button type='primary' onClick={() => next()} disabled={disableNextFinishBtn}>
                         Next
                     </Button>
                 )}
                 {currentStep === steps.length - 1 && (
-                    <Button type='primary' onClick={() => message.success('Processing complete!')}>
+                    <Button type='primary' onClick={() => message.success('Processing complete!')} disabled={disableNextFinishBtn}>
                         Done
                     </Button>
                 )}
