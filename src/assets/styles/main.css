@@ -2,10 +2,26 @@
     width: 100%;
 }
 
-.card-photo:hover figcaption {
+.list-group .list-item .ant-checkbox-wrapper span:last-child {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+.card-photo figcaption {
+    transition: linear 0.3s all;
+}
+
+.ant-checkbox-wrapper-checked .card-photo figcaption {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    transition: linear 0.3s all;
+}
+
+.ant-checkbox-group {
+    display: grid;
+}
+
+.ant-checkbox {
+    display: none;
 }

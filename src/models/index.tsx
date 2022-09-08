@@ -4,12 +4,12 @@ export type Categories = {
 }
 
 export const CATEGORIES: Categories = {
-    'nature': ['sea', 'mountains', 'forests', 'flowers', ''], 
+    'nature': ['sea', 'mountains', 'forests', 'flowers'], 
     'travel': ['adventure', 'leisure'], 
     'decor': ['living', 'bathroom', 'dinning', 'kitchen'], 
     'animals': ['wild', 'pets', 'birds', 'insects', 'sea'], 
     'architecture': ['cottage', 'building', 'skyscrapper'], 
-    'cooking': ['grill']
+    'cooking': ['grill', 'baking', 'asian food', 'healthy food']
 }
 export type UnSplashPhoto = {
     alt_description: string;
@@ -30,13 +30,20 @@ export type Photo = {
     caption: string;
 }
 
+
+export type WizardContextModel= {
+    wizardData?: RegistrationWizard | undefined,
+    setWizardData?: Function | undefined,
+    currentStep?: any
+}
+
 export type RegistrationWizard = {
     form: {
         userName: string | number | undefined;
         password: string | number | undefined;
         email: string | undefined;
     };
-    category: string[];
+    categories: string[];
     subCategories: string[];
     [key: string]: any;
 }

@@ -5,6 +5,11 @@ import { RegistrationWizardContext } from '../context/AppContext'
 
 const UserInfoForm = () => {
     const context = useContext(RegistrationWizardContext)
+    const { wizardData, setWizardData, currentStep } = context
+
+    const onFormChange = (e: any) => {
+        console.log(e)
+    }
     return <div>
         <Form
             name="basic"
@@ -13,6 +18,7 @@ const UserInfoForm = () => {
             layout={'vertical'}
             initialValues={{ remember: false }}
             autoComplete="off"
+            onChange={onFormChange}
         >
             <Form.Item
                 className='mb-2.5'
@@ -20,7 +26,7 @@ const UserInfoForm = () => {
                 name="username"
                 rules={[{ required: true, message: 'Please input your username!' }]}
             >
-                <Input value={context.form.userName}/>
+                <Input value={wizardData?.form.userName} />
             </Form.Item>
 
             <Form.Item
@@ -29,7 +35,7 @@ const UserInfoForm = () => {
                 name="password"
                 rules={[{ required: true, message: 'Please input your password!' }]}
             >
-                <Input.Password value={context.form.userName}/>
+                <Input.Password value={wizardData?.form.userName} />
             </Form.Item>
             <Form.Item
                 className='mb-2.5'

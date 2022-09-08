@@ -29,13 +29,16 @@ export const getCategoriesPhotos = async () => {
     return photosList
 }
 
-export const getSubCategoriesPhotos = async (_category: string) => {
+export const getSubCategoriesPhotos = async (_categories: string[]) => {
     let photosList: any[] = []
     try {
-        for (let i = 0; i < CATEGORIES[_category].length; i++) {
-            const photo = await getPhoto(_category, CATEGORIES[_category][i])
-            if (photo) {
-                photosList.push(photo)
+        for (let i = 0; i < _categories.length; i++) {
+            const _category = _categories[i]
+            for (let j = 0; j < CATEGORIES[_category].length; j++) {
+                const photo = await getPhoto(_category, CATEGORIES[_category][j])
+                if (photo) {
+                    photosList.push(photo)
+                }
             }
         }
     } catch (error) {
