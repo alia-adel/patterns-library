@@ -1,8 +1,31 @@
 # JavaScript design patterns
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this code some of the JavaScript Design patterns are demonestrated.
+This is a registration form with three steps:
+- User information
+- Category Selections
+- Sub category selection
 
-## Available Scripts
+**Note:** This project is a demo and is not intended to have all features functioning
+
+## 1- Optimize your loading sequence pattern
+Here we did code splitting uses `React.lazy` and `Suspense` tool/library, which helps you to load a dependency lazily and only load it when needed by the user.
+
+- `PhotosList.tsx` and `PhotoCard.tsx` are both loaded using `React.lazy`
+- `PhotoCard.tsx` is loaded inside `PhotosList.tsx`
+- `PhotosList.tsx` is loaded in steps 2 and 3
+
+### Fetched packages when the page loads
+![initial load](./public/_initial_load.jpg)
+
+### Fetched packages after navigating to step 2 (`PhotosList.tsx` and `PhotoCard.tsx` are fetched)
+![lazy load](./public/_lazy_loaded.jpg)
+
+
+## Tools Used
+
+* [Ant Design](https://ant.design/) css framework was used for styling purposes
+* [Tailwind css](https://tailwindcss.com/) css utility framework was used for styling purposes
 
 In the project directory, you can run:
 
@@ -14,11 +37,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -28,19 +46,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
