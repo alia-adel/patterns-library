@@ -22,8 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "poststart": "npx tailwindcss -i ./src/index.css -o ./assets/styles/output.css --watch",
-    "postrestart": "npx tailwindcss -i ./src/index.css -o ./assets/styles/output.css --watch"
+    "poststart": "npx tailwindcss -i ./src/index.css -o ./output.css --watch",
+    "postrestart": "npx tailwindcss -i ./src/index.css -o ./output.css --watch"
   },
   "eslintConfig": {
     "extends": [

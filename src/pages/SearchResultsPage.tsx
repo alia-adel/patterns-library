@@ -9,16 +9,23 @@ const PhotosList = React.lazy(() => import('../components/PhotosList'))
 const SearchResultsPage = () => {
     const [searchText, setSearchText] = useState('')
     const [searchResults, setSearchResults] = useState<Photo[] | undefined>([])
-    
+
     const onSearch = async (_searchText: string) => {
         setSearchText(_searchText)
         setSearchResults(await getPhotos(_searchText))
     }
 
+    const SearchResultList = () => {
+        if (searchResults && searchResults.length === 0) return <span>No data retrieved</span>
+        return <PhotosList list={searchResults} />
+    }
+
     return <article className='p-5 w-5/6 min-w-[250px] flex flex-col items-stretch my-5 mx-auto'
         style={{ height: 'calc(100vh - 1.25rem)' }}>
-        <Title level={2}>Search UnSplash Images</Title>
-        <section className='flex-1 w-full bg-white p-8 rounded-md overflow-auto m-auto'>
+        <Title level={2}>
+            Search <a href='https://unsplash.com/' target={'_blank'} title='Unsplash site' rel="noreferrer">Unsplash</a> Images
+        </Title>
+        <section className='flex-1 w-full m-h-[400px] bg-white p-8 rounded-md overflow-auto m-auto'>
             <div className='h-full flex flex-col items-stretch'>
                 <Form
                     name="basic"
@@ -45,7 +52,7 @@ const SearchResultsPage = () => {
                     </Form.Item>
                 </Form>
                 <div className='flex-1 overflow-auto'>
-                    <PhotosList list={searchResults} />
+                    <SearchResultList />
                 </div>
             </div>
         </section>

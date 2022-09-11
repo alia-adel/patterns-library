@@ -7,8 +7,8 @@ const PhotoCard = React.lazy(() => import('./PhotoCard'))
 
 const PhotosList = ({ list }: { list: any }) => {
 
-    const ListItem = ({ photo, index }: { photo: Photo, index: number }) => {
-        return <li key={`${photo.caption}_${index}`} className='list-item flex col items-stretch h-full w-full'>
+    const ListItem = ({ photo }: { photo: Photo }) => {
+        return <li className='list-item flex col items-stretch h-full w-full'>
             <PhotoCard photo={photo} />
         </li>
     }
@@ -16,7 +16,7 @@ const PhotosList = ({ list }: { list: any }) => {
     return <Suspense fallback={<Loader />}>
         <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
             {list.map((_photo: Photo, index: number) =>
-                <ListItem photo={_photo} index={index} />
+                <ListItem key={`photo_${index}`} photo={_photo} />
             )}
         </ul>
     </Suspense>
