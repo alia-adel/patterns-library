@@ -1,11 +1,11 @@
 import React from 'react'
 import { Skeleton } from 'antd'
 import { Photo } from '../models'
-const PhotoCard = ({ photo }: { photo: Photo }) => {
 
+const PhotoCard = ({ photo }: { photo: Photo }) => {
     const Photo = () => {
         if (photo) {
-            return <figure className='card-photo relative h-full'>
+            return <figure className='card-photo relative w-full h-full'>
                 <img src={photo.src} alt={photo.alt}
                     className='w-full h-full' />
                 <figcaption

@@ -9,6 +9,7 @@ const PhotosList = React.lazy(() => import('../components/PhotosList'))
 const SearchResultsPage = () => {
     const [searchText, setSearchText] = useState('')
     const [searchResults, setSearchResults] = useState<Photo[] | undefined>([])
+    
     const onSearch = async (_searchText: string) => {
         setSearchText(_searchText)
         setSearchResults(await getPhotos(_searchText))

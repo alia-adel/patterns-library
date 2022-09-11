@@ -1,24 +1,19 @@
 # JavaScript design patterns
 
-In this code some of the JavaScript Design patterns are demonestrated.
-This is a registration form with three steps:
-- User information
-- Category Selections
-- Sub category selection
-
-**Note:** This project is a demo and is not intended to have all features functioning
-
+## Description
+This is an UnSplash search page which demonstrates **Optimize your loading sequence pattern** design pattern.
+ 
 ## 1- Optimize your loading sequence pattern
 Here we did code splitting uses `React.lazy` and `Suspense` tool/library, which helps you to load a dependency lazily and only load it when needed by the user.
 
 - `PhotosList.tsx` and `PhotoCard.tsx` are both loaded using `React.lazy`
 - `PhotoCard.tsx` is loaded inside `PhotosList.tsx`
-- `PhotosList.tsx` is loaded in steps 2 and 3
+- `PhotosList.tsx` is loaded in the `SearchResultsPage.tsx`
 
 ### Fetched packages when the page loads
 ![initial load](./public/_initial_load.jpg)
 
-### Fetched packages after navigating to step 2 (`PhotosList.tsx` and `PhotoCard.tsx` are fetched)
+### Fetched packages after searching with any photo category (`PhotosList.tsx` and `PhotoCard.tsx` are fetched)
 ![lazy load](./public/_lazy_loaded.jpg)
 
 
